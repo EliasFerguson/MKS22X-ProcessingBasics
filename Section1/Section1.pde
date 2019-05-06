@@ -37,14 +37,14 @@ class Visualizer {
     //the values in the array.
     //Negative values are red, and go below the line.
     //Positive values are green and go above the line.
-    for(int i = 0; x < values.length; i++) {
-      if (values[i] < 0) {
-        fill(255, 0, 0);
+    float width = 400 / values.length;
+    for (int i = 0; i < values.length; i++) {
+      if(values[i] >=0){
+        fill(255,(99 - values[i]) * (255.0/99),0);
+      } else{
+        fill((99 + values[i]) * (255.0/99),255,0);
       }
-      else {
-        fill(0, 255, 0);
-      }
-      rect(x + (400 / 10) * i, y + MAX_VALUE, (400 / 10), -values[i]);
+      rect(x + width * i, y + 100, width, values[i]);
     }
 
     //???WRITE THIS METHOD FIRST!!!
@@ -64,15 +64,11 @@ class Visualizer {
     for (int i = 0; i < values.length; i++) {
       values[i] += speeds[i]; //the speed updates the values. Do not touch this.
       //??? keep them values between max/min value so they stay in the box.
-      if(values[i] < MIN_VALUE) {
-        values[i] = MIN_VALUE;
+       if (values[i] >= 100) {
+        speeds[i] *= -1;
       }
-      else if (values[i] > MAX_VALUE) {
-        values[i] = MAX_VALUE;
-      }
-      //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
-      if (values[i] == MIN_VALUE || values[i] == MAX_VALUE) {
-        speeds[i] = speeds[i] * -1;
+      if (values[i] <= -100) {
+        speeds[i] *= -1;
       }
     }
   }
