@@ -37,6 +37,15 @@ class Visualizer {
     //the values in the array.
     //Negative values are red, and go below the line.
     //Positive values are green and go above the line.
+    for(int i = 0; x < values.length; i++) {
+      if (values[i] < 0) {
+        fill(255, 0, 0);
+      }
+      else {
+        fill(0, 255, 0);
+      }
+      rect(x + (400 / 10) * i, y + MAX_VALUE, (400 / 10), -values[i]);
+    }
 
     //???WRITE THIS METHOD FIRST!!!
     //THESE ARE WRONG: They just illustrate how they could look
