@@ -25,7 +25,9 @@ void gasket(int levels, float v1x, float v1y, float v2x, float v2y, float v3x, f
       float mid23y = (v2y+v3y)/2;
       float mid31x = (v3x+v1x)/2;
       float mid31y = (v3y+v1y)/2;
-      
+      gasket(levels - 1, v1x, v1y, mid12x, mid12y, mid31x, mid31y);
+      gasket(levels - 1, mid12x, mid12y, v2x, v2y, mid23x, mid23y);
+      gasket(levels - 1, mid31x, mid31y, mid23x, mid23y, v3x, v3y);
   }
 }
 
