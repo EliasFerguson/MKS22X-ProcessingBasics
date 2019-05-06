@@ -49,10 +49,10 @@ class Visualizer {
 
     //???WRITE THIS METHOD FIRST!!!
     //THESE ARE WRONG: They just illustrate how they could look
-    fill(255, 0, 0);
-    rect(x+40, y+100, 60, 50);
-    fill(0, 255, 0);
-    rect(x+120, y+50, 60, 50);
+    //fill(255, 0, 0);
+    //rect(x+40, y+100, 60, 50);
+    //fill(0, 255, 0);
+    //rect(x+120, y+50, 60, 50);
 
 
     //Width of the visualizer is 400!
@@ -64,11 +64,9 @@ class Visualizer {
     for (int i = 0; i < values.length; i++) {
       values[i] += speeds[i]; //the speed updates the values. Do not touch this.
       //??? keep them values between max/min value so they stay in the box.
-       if (values[i] >= 100) {
-        speeds[i] *= -1;
-      }
-      if (values[i] <= -100) {
-        speeds[i] *= -1;
+       if (values[i] >= 100 || values[i] <= -100) {
+        values[i] -= speeds[i];
+        speeds[i] = -speeds[i];
       }
     }
   }
